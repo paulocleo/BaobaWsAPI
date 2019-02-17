@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -Dspring.profiles.active=prod $JAVA_OPTS -jar target/baobaws-0.0.1-SNAPSHOT.jar
+web: java $JAVA_OPTS -jar target/dependency/baobaws-0.0.1-SNAPSHOT.jar --port $PORT target/*.war

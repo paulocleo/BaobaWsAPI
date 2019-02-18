@@ -9,7 +9,6 @@
 		<version>2.1.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<packaging>war</packaging>
 	<groupId>com.baoba.home</groupId>
 	<artifactId>baobaws</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

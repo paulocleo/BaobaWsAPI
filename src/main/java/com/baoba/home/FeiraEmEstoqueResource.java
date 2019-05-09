@@ -65,7 +65,7 @@ public class FeiraEmEstoqueResource {
 				}
 			}
 			
-//			Firebase.addProduto(listaFeira.get(0));
+			Firebase.addProduto(listaFeira.get(0));
 
 			listaFeira.sort(java.util.Comparator.comparing(Feira::getFastTimeData));
 

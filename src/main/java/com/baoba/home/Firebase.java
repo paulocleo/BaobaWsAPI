@@ -17,22 +17,26 @@ public class Firebase {
 		FirebaseOptions options = null;
 
 		try {
-			serviceAccount = new FileInputStream("src/main/resources/baoba-home-firebase-adminsdk.json");
+			
+			if(FirebaseApp.getApps().isEmpty())
+			{
+				serviceAccount = new FileInputStream("src/main/resources/baoba-home-firebase-adminsdk.json");
 
-			options = new FirebaseOptions
-					.Builder()
-					.setCredentials(GoogleCredentials.fromStream(serviceAccount))
-					.setDatabaseUrl("https://baoba-home.firebaseio.com/")
-					.build();
+				options = new FirebaseOptions
+						.Builder()
+						.setCredentials(GoogleCredentials.fromStream(serviceAccount))
+						.setDatabaseUrl("https://baoba-home.firebaseio.com/")
+						.build();
 
-			FirebaseApp.initializeApp(options);
-
+				FirebaseApp.initializeApp(options);
+			}
+			
 			final FirebaseDatabase database = FirebaseDatabase.getInstance();
 			DatabaseReference ref = database.getReference("Feira");
 
 			ref.child("KeyTestejava").setValueAsync(feira);
 
-			FirebaseApp.getInstance().delete();
+//			FirebaseApp.getInstance().delete();
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

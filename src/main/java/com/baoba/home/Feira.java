@@ -7,14 +7,16 @@ public class Feira {
 	private String preco;
 	private int quantidade;
 	private String dataVencimento;
+	private Long fastTimeData;
 	
-	public Feira(String codigoBarras, String nomeProduto, String preco, int quantidade, String dataVencimento) {
+	public Feira(String codigoBarras, String nomeProduto, String preco, int quantidade, String dataVencimento, Long fastTimeData) {
 		super();
 		this.codigoBarras = codigoBarras;
 		this.nomeProduto = nomeProduto;
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.dataVencimento = dataVencimento;
+		this.fastTimeData = fastTimeData;
 	}
 		
 	public String getCodigoBarras() {
@@ -46,6 +48,14 @@ public class Feira {
 	}
 	public void setDataVencimento(String dataVencimento) {
 		this.dataVencimento = dataVencimento;
+	}
+
+	public Long getFastTimeData() {
+		return fastTimeData;
+	}
+
+	public void setFastTimeData(Long fastTimeData) {
+		this.fastTimeData = fastTimeData;
 	}
 	
 	

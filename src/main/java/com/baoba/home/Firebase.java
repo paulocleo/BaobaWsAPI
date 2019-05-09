@@ -34,9 +34,8 @@ public class Firebase {
 			final FirebaseDatabase database = FirebaseDatabase.getInstance();
 			DatabaseReference ref = database.getReference("Feira");
 
-			ref.child("KeyTestejava").setValueAsync(feira);
-
-//			FirebaseApp.getInstance().delete();
+			String chave = "barcode-" + feira.getCodigoBarras();
+			ref.child(chave).setValueAsync(feira);
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

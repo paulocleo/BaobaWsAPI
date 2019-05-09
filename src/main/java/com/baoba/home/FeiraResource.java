@@ -21,7 +21,7 @@ public class FeiraResource {
 	
 	public static final String URL = "https://baoba-home.firebaseio.com/Feira.json?auth=RLiDBgOkvvXml0sIEVhYBMCI5FgUkNzeLeAeNSsY";
 
-	JSONObject dadosFeiraOriginalJson;
+	JSONObject dadosFeiraOriginalJson; 
 	JSONArray listaFeiraNomes;
 	List<Feira> listaFeira;
 	

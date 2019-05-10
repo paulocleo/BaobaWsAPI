@@ -32,7 +32,7 @@ public class FeiraAddResource {
 		
 		Firebase.addProduto(feira);
 		
-		return "Post AddFeira esta funcionando " + barras;
+		return "Get AddFeira esta funcionando " + barras;
 	}
 
 }

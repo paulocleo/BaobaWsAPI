@@ -6,11 +6,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
@@ -29,7 +32,8 @@ public class FeiraEmEstoqueResource {
 	List<Feira> listaFeira;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String obterProdutosFeira() {
+	public String obterProdutosFeira(
+			@RequestParam(value = "valBusca", required = true) String valBusca) {
 
 		listaFeira = new ArrayList<Feira>();
 		listaFeiraNomes = new JSONArray();
@@ -65,11 +69,21 @@ public class FeiraEmEstoqueResource {
 				}
 			}
 			
-//			Firebase.addProduto(listaFeira.get(0));
-
 			listaFeira.sort(java.util.Comparator.comparing(Feira::getFastTimeData));
-
-			String feiraConvertida = new Gson().toJson(listaFeira).toString();
+			
+			String feiraConvertida = "";
+			if(valBusca.isEmpty()) {
+				feiraConvertida = new Gson().toJson(listaFeira).toString();
+			}
+			else
+			{
+				List<Feira> listaFiltrada = new ArrayList<>();
+				listaFiltrada = listaFeira.stream()
+								.filter(feira->feira.getNomeProduto().toUpperCase().contains(valBusca.toUpperCase()))
+								.collect(Collectors.toList());
+				
+				feiraConvertida = new Gson().toJson(listaFiltrada).toString();
+			}
 
 			return feiraConvertida;
 
